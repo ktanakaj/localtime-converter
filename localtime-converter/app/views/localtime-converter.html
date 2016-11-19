@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{{ "CONVERT_FORM_TITLE" | translate }}</div>
+  <div class="panel-body">
+    <div>{{ "CONVERT_FORM_BODY" | translate }}</div>
+    <form name="convertForm" novalidate>
+      <fieldset class="form-group">
+        <input type="text" name="form.date" ng-model="vm.form.date" ng-change="!convertForm.$invalid && vm.convert()" validate-date required />
+        <span ng-switch="vm.result.date.createdBy">
+          <span ng-switch-when="dateString">({{ "DATE_STRING" | translate }}, {{ vm.offset }} {{ vm.abbr }})</span>
+          <span ng-switch-when="unixtime">({{ "UNIXTIME" | translate }})</span>
+          <span ng-switch-when="unixms">({{ "UNIXMS" | translate }})</span>
+        </span>
+        <div class="warning" ng-show="convertForm['form.date'].$error.required">{{ "CONVERT_FORM_REQUIRED" | translate }}</div>
+        <div class="warning" ng-show="convertForm['form.date'].$error.validateDate">{{ "CONVERT_FORM_INVALID" | translate }}</div>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="form.timezone">{{ "TIMEZONE" | translate }}:</label>
+        <select id="form.timezone" ng-model="vm.form.timezone" ng-change="!convertForm.$invalid && vm.convert()">
+          <option ng-repeat="tz in vm.timezones">{{ tz }}</option>
+        </select>
+        <!--<button type="button" class="btn btn-warning btn-sm" ng-click="vm.reset()">{{ "RESET" | translate }}</button>-->
+      </fieldset>
+      <small><a href="{{ 'CONVERT_FORM_NOTE_URL' | translate }}">{{ "CONVERT_FORM_NOTE" | translate }}</a></small>
+    </form>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">{{ "CONVERT_FORM_RESULT" | translate }}</div>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>{{ "UNIXTIME" | translate }}</th>
+        <td>{{ vm.result.unixtime }}</td>
+      </tr>
+      <tr>
+        <th>{{ "UTCTIME" | translate }}</th>
+        <td>{{ vm.result.date | date:'medium':'UTC' }}</td>
+      </tr>
+      <tr>
+        <th>{{ "LOCALTIME" | translate }}</th>
+        <td>{{ vm.result.date | date:'medium':vm.result.offset }}</td>
+      </tr>
+      <tr>
+        <th>{{ "ISO8601" | translate }}</th>
+        <td>{{ vm.result.date.toISOString() }}</td>
+      </tr>
+      <tr>
+        <th>{{ "TIMEZONE" | translate }}</th>
+        <td>{{ vm.result.offset }} {{ vm.result.abbr }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

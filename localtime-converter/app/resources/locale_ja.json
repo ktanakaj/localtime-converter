@@ -1,0 +1,22 @@
+{
+	"APP_NAME": "ローカル日時変換",
+	"VERSION": "0.0.1",
+	"COPYRIGHT": "Copyright (C) 2016 Koichi Tanaka All Rights Reserved.",
+	"FATAL_ERROR": "エラーが発生しました。ブラウザを再読み込みして再度実行してください。",
+	"RESET": "リセット",
+	"TIMEZONE": "タイムゾーン",
+	"UNIXTIME": "Unixtime",
+	"UNIXMS": "Unixtime ms",
+	"UTCTIME": "UTC日時",
+	"LOCALTIME": "ローカル日時",
+	"ISO8601": "ISO8601形式",
+	"RFC2822": "RFC2822形式",
+	"DATE_STRING": "日時文字列",
+	"CONVERT_FORM_TITLE": "日時またはUnixtimeの入力",
+	"CONVERT_FORM_BODY": "入力された日時またはUnixtimeを、選択されたタイムゾーンでの日時に変換します。",
+	"CONVERT_FORM_NOTE": "※ JavaScriptの new Date() で処理可能な書式+Unixtimeが変換可能です。",
+	"CONVERT_FORM_NOTE_URL":  "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Date",
+	"CONVERT_FORM_RESULT": "変換結果",
+	"CONVERT_FORM_REQUIRED": "日時またはタイムスタンプを入力してください。",
+	"CONVERT_FORM_INVALID": "日時として処理できない文字列です。値を確認してください。"
+}

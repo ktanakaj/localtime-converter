@@ -1,0 +1,22 @@
+{
+	"APP_NAME": "Local Time Converter",
+	"VERSION": "0.0.1",
+	"COPYRIGHT": "Copyright (C) 2016 Koichi Tanaka All Rights Reserved.",
+	"FATAL_ERROR": "Fatal Error. Please refresh the page and retry.",
+	"RESET": "Reset",
+	"TIMEZONE": "Timezone",
+	"UNIXTIME": "Unix Time",
+	"UNIXMS": "Unix Time ms",
+	"UTCTIME": "UTC Time",
+	"LOCALTIME": "Local Time",
+	"ISO8601": "ISO8601",
+	"RFC2822": "RFC2822",
+	"DATE_STRING": "Date String",
+	"CONVERT_FORM_TITLE": "Input date or unix time",
+	"CONVERT_FORM_BODY": "Convert date or unix time to other timezone.",
+	"CONVERT_FORM_NOTE": "* You can input some date formats that parsable by new Date() and unix time.",
+	"CONVERT_FORM_NOTE_URL":  "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Date",
+	"CONVERT_FORM_RESULT": "Result",
+	"CONVERT_FORM_REQUIRED": "Please input the date or unix time.",
+	"CONVERT_FORM_INVALID": "Please input correct date or unix time."
+}
