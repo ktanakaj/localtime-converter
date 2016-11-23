@@ -4,8 +4,8 @@
 import * as assert from 'power-assert';
 import 'mocha';
 
-import localtimeConverterService from '../../app/scripts/services/localtime-converter';
-const service = localtimeConverterService();
+import { LocaltimeConverterService } from '../../app/scripts/services/localtime-converter';
+const service = new LocaltimeConverterService();
 
 describe('localtimeConverterService', () => {
 	describe('#newDate()', () => {
