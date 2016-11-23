@@ -5,11 +5,11 @@
 
 /**
  * ブラウザの言語設定を取得する。
- * @returns {string} 2文字の言語コード。取得失敗時は空文字列。
+ * @returns 2文字の言語コード。取得失敗時は空文字列。
  */
-function getBrowserLanguage() {
+function getBrowserLanguage(): string {
 	try {
-		return (navigator.browserLanguage || navigator.language || navigator.userLanguage).substr(0, 2);
+		return navigator.language.substr(0, 2);
 	} catch (e) {
 		return "";
 	}
@@ -17,9 +17,9 @@ function getBrowserLanguage() {
 
 /**
  * アプリで使用する言語設定を取得する。
- * @returns {string} 2文字の言語コード。
+ * @returns 2文字の言語コード。
  */
-function getLanguage() {
+function getLanguage(): string {
 	// 日英のみ対応なので、日本語以外は英語で返す
 	let lang = getBrowserLanguage();
 	if (lang != "" && lang != "ja") {

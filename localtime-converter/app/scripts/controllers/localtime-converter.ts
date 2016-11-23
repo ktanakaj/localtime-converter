@@ -1,12 +1,14 @@
-"use strict";
+import * as moment from 'moment';
+import 'moment-timezone';
+
 /**
  * ローカル日時変換Angular.jsコントローラ。
  * @module ./scripts/controllers/localtime-converter
- * @param {Object} $scope スコープ。
- * @param {Function} $filter フィルター。
- * @param {Object} localtimeConverterService ローカル日時変換サービス。
+ * @param $scope スコープ。
+ * @param $filter フィルター。
+ * @param localtimeConverterService ローカル日時変換サービス。
  */
-export default /* @ngInject */ function ($scope, $filter, localtimeConverterService) {
+export default ["$scope", "$filter", "localtimeConverterService", function ($scope, $filter, localtimeConverterService) {
 
 	/**
 	 * 画面表示のリセット。
@@ -32,11 +34,13 @@ export default /* @ngInject */ function ($scope, $filter, localtimeConverterServ
 	 * @function convert
 	 */
 	this.convert = () => {
-		const date = localtimeConverterService.newDate(this.form.date);
+		const result = localtimeConverterService.newDate(this.form.date);
+		const date = result[0];
 		const abbr = moment(date).tz(this.form.timezone).format('z');
 		this.result = {
 			unixtime: Math.floor(date.getTime() / 1000),
 			date: date,
+			createdBy: result[1],
 			abbr: isNaN(Number(abbr)) ? abbr : '',
 			offset: moment(date).tz(this.form.timezone).format('Z'),
 		};
@@ -45,4 +49,4 @@ export default /* @ngInject */ function ($scope, $filter, localtimeConverterServ
 	// タイムゾーン一覧を設定して画面をリセット
 	this.timezones = moment.tz.names();
 	this.reset();
-}
+}];

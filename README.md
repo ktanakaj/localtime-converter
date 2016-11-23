@@ -4,9 +4,9 @@
 （日時文字列は、単に `new Date()` するだけなので、JavaScriptが対応していれば何でも変換します。AngularJSとMoment呼ぶだけ。）
 
 ## 環境
-* AngularJS 1.5.7
-    * Bable 6.5.2
-    * browserify 13.1.0
+* AngularJS 1.5.x
+    * TypeScript 2.0.x
+    * browserify 13.1.x
     * UI Bootstrap 1.3.3
     * Moment Timezone 0.5.9
 
@@ -23,8 +23,8 @@
 * Visual Studio Community 2015 (NTVS) - アプリ開発用IDE
 
 ## 設置方法
-JavaScriptオンリーで作っているので、`app`以下のファイルを適当な場所に設置すれば動作します。  
-ただし、babelを使用している関係上ビルドが必要です。
+JavaSriptオンリーで動いているので、`app`以下のファイルを適当な場所に設置すれば動作します。  
+ただし、TypeScriptを使用している関係上ビルドが必要です。
 
 動作する仮想環境は、ソース一式の展開後に `vagrant up` で自動的に立ち上がります。
 
@@ -35,7 +35,7 @@ JavaScriptオンリーで作っているので、`app`以下のファイルを�
 * `npm run watch` - アプリのビルド（デバッグ用）
 * `npm run doc` - アプリのAPIドキュメント生成
 * `npm test` - アプリのユニットテスト実行
-* `npm run eslint` - アプリの静的解析ツール実行
+* `npm run tslint` - アプリの静的解析ツール実行
 * `npm run clean` - 全ビルド生成物の削除
 
 ## 実行方法

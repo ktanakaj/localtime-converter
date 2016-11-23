@@ -5,7 +5,7 @@
     <form name="convertForm" novalidate>
       <fieldset class="form-group">
         <input type="text" name="form.date" ng-model="vm.form.date" ng-change="!convertForm.$invalid && vm.convert()" validate-date required />
-        <span ng-switch="vm.result.date.createdBy">
+        <span ng-switch="vm.result.createdBy">
           <span ng-switch-when="dateString">({{ "DATE_STRING" | translate }}, {{ vm.offset }} {{ vm.abbr }})</span>
           <span ng-switch-when="unixtime">({{ "UNIXTIME" | translate }})</span>
           <span ng-switch-when="unixms">({{ "UNIXMS" | translate }})</span>
