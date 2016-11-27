@@ -1,13 +1,13 @@
 # Local Time Converter / ローカル日時変換
 日時を指定したタイムゾーンでの日時に変換するミニWebアプリです。  
 入力値としては、各種日時文字列の他Unixtimeと、JavaScriptのミリ秒まで含んだUnixtimeに対応します。  
-（日時文字列は、単に `new Date()` するだけなので、JavaScriptが対応していれば何でも変換します。AngularJSとMoment呼ぶだけ。）
+（日時文字列は、単に `new Date()` するだけなので、JavaScriptが対応していれば何でも変換します。）
 
 ## 環境
-* AngularJS 1.5.x
+* AngularJS 2.2.3
     * TypeScript 2.0.x
     * browserify 13.1.x
-    * UI Bootstrap 1.3.3
+    * ng2-translate 4.0.x
     * Moment Timezone 0.5.9
 
 ### 対応ブラウザ
@@ -23,7 +23,7 @@
 * Visual Studio Community 2015 (NTVS) - アプリ開発用IDE
 
 ## 設置方法
-JavaSriptオンリーで動いているので、`app`以下のファイルを適当な場所に設置すれば動作します。  
+JavaSriptオンリーで動いているので、`src`以下のファイルを適当な場所に設置すれば動作します。  
 ただし、TypeScriptを使用している関係上ビルドが必要です。
 
 動作する仮想環境は、ソース一式の展開後に `vagrant up` で自動的に立ち上がります。
@@ -33,13 +33,13 @@ JavaSriptオンリーで動いているので、`app`以下のファイルを適
 
 * `npm run build` - アプリのビルド
 * `npm run watch` - アプリのビルド（デバッグ用）
-* `npm run doc` - アプリのAPIドキュメント生成
+* `npm run doc` - アプリのAPIドキュメント生成 ※TS2.0と0.5.1の環境だと動作せず
 * `npm test` - アプリのユニットテスト実行
 * `npm run tslint` - アプリの静的解析ツール実行
 * `npm run clean` - 全ビルド生成物の削除
 
 ## 実行方法
-`localtime-converter/app/` にWeb上からアクセスしてください。デフォルトのVMでは http://172.16.10.15/ でアクセス可能です。
+`localtime-converter/src/` にWeb上からアクセスしてください。デフォルトのVMでは http://172.16.10.15/ でアクセス可能です。
 
 ### デモ
 http://honeplus.web.fc2.com/localtime-converter/
