@@ -6,8 +6,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { DateValidatorDirective } from './directives/validate-date';
-import { LocaltimeConverterComponent } from './controllers/localtime-converter';
+import { DateValidatorDirective } from './localtime-converter/shared/valid-date.directive';
+import { LocaltimeConverterComponent } from './localtime-converter/localtime-converter.component';
 
 /**
  * ローカル日時変換ルートモジュールクラス。

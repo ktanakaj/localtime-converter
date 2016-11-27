@@ -1,18 +1,18 @@
 /**
  * ローカル日時変換コンポーネント。
- * @module ./scripts/controllers/localtime-converter
+ * @module ./app/localtime-converter/localtime-converter.component
  */
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import 'moment-timezone';
-import { LocaltimeConverterService } from '../services/localtime-converter';
+import { LocaltimeConverterService } from './shared/localtime-converter.service';
 
 /**
  * ローカル日時変換コンポーネントクラス。
  */
 @Component({
 	selector: 'localtime-converter',
-	templateUrl: 'views/localtime-converter.html',
+	templateUrl: 'app/localtime-converter/localtime-converter.html',
 	providers: [LocaltimeConverterService],
 })
 export class LocaltimeConverterComponent implements OnInit {

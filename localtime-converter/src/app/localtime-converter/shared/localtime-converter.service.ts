@@ -1,6 +1,6 @@
 /**
  * ローカル日時変換サービスモジュール。
- * @module ./scripts/services/localtime-converter
+ * @module ./app/localtime-converter/shared/localtime-converter.service
  */
 import { Injectable } from '@angular/core';
 

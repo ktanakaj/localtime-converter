@@ -1,10 +1,10 @@
 /**
  * Date変換可否バリデーションディレクティブ。
- * @module ./scripts/directives/validate-date
+ * @module ./app/localtime-converter/shared/valid-date
  */
 import { Directive } from '@angular/core';
 import { NG_VALIDATORS, AbstractControl, Validator, ValidatorFn, Validators } from '@angular/forms';
-import { LocaltimeConverterService } from '../services/localtime-converter';
+import { LocaltimeConverterService } from './localtime-converter.service';
 
 /**
  * Date変換可否バリデーションディレクティブクラス。

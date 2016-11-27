@@ -3,14 +3,14 @@
   "version": "0.0.3",
   "private": true,
   "scripts": {
-    "build": "npm run clean-app && browserify ./app/scripts/main.ts -p tsify -o ./app/bundle.js",
-    "watch": "npm run clean-app && watchify --poll=true ./app/scripts/main.ts -p tsify -v -d -o ./app/bundle.js",
+    "build": "npm run clean-app && browserify ./src/app/main.ts -p tsify -o ./src/bundle.js",
+    "watch": "npm run clean-app && watchify --poll=true ./src/app/main.ts -p tsify -v -d -o ./src/bundle.js",
     "test": "NODE_ENV=test mocha --compilers ts:espower-typescript/guess --recursive ./test",
-    "doc": "npm run clean-doc && typedoc ./app/scripts ./test --out ./out",
+    "doc": "npm run clean-doc && typedoc ./src/app ./test --out ./out",
     "clean": "npm run clean-app & npm run clean-doc",
-    "clean-app": "rm -f ./app/bundle.js",
+    "clean-app": "rm -f ./src/bundle.js",
     "clean-doc": "rm -rf ./out",
-    "tslint": "tslint ./app/scripts ./test"
+    "tslint": "tslint ./src/app ./test"
   },
   "author": "Koichi Tanaka",
   "license": "MIT",

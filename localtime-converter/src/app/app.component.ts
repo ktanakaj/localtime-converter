@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
  */
 @Component({
 	selector: 'app-root',
-	templateUrl: 'views/app.html',
+	templateUrl: 'app/app.html',
 })
 export class AppComponent { name = 'Angular'; }

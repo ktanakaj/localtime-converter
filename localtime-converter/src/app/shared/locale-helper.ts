@@ -1,6 +1,6 @@
 /**
  * Angular2全般のユーティリティ。
- * @module ./scripts/libs/angular-utils
+ * @module ./app/shared/locale-helper
  */
 
 /**
