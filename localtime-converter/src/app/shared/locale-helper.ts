@@ -1,5 +1,5 @@
 /**
- * Angular2全般のユーティリティ。
+ * ロケール処理用のヘルパーモジュール。
  * @module ./app/shared/locale-helper
  */
 
@@ -18,7 +18,7 @@ function getLanguage(): string {
 }
 
 /**
- * ブラウザのロケールを取得する。
+ * アプリで使用するロケールを取得する。
  * @returns ロケールコード。
  */
 function getLocale(): string {

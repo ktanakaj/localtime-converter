@@ -2,7 +2,7 @@
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="https://github.com/ktanakaj/localtime-converter">{{ "APP_NAME" }} <span class="hidden-xs">Ver{{ "VERSION" }}</span></a>
+        <a class="navbar-brand" href="{{ 'REPOSITORY_URL' | translate }}">{{ "APP_NAME" | translate }} <span class="hidden-xs">Ver{{ "VERSION" | translate }}</span></a>
       </div>
     </div>
   </nav>
@@ -10,4 +10,4 @@
 <div class="container-fluid">
   <localtime-converter></localtime-converter>
 </div>
-<footer class="footer">{{ "COPYRIGHT" }}</footer>
+<footer class="footer">{{ "COPYRIGHT" | translate }}</footer>

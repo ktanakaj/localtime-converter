@@ -5,6 +5,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { TranslateModule } from 'ng2-translate';
 import { AppComponent } from './app.component';
 import { DateValidatorDirective } from './localtime-converter/shared/valid-date.directive';
 import { LocaltimeConverterComponent } from './localtime-converter/localtime-converter.component';
@@ -16,6 +18,8 @@ import { LocaltimeConverterComponent } from './localtime-converter/localtime-con
 	imports: [
 		BrowserModule,
 		FormsModule,
+		HttpModule,
+		TranslateModule.forRoot(),
 	],
 	declarations: [
 		AppComponent,

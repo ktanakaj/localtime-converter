@@ -5,6 +5,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import 'moment-timezone';
+import 'moment/locale/ja';
+import localeHelper  from '../shared/locale-helper';
 import { LocaltimeConverterService } from './shared/localtime-converter.service';
 
 /**
@@ -32,14 +34,16 @@ export class LocaltimeConverterComponent implements OnInit {
 	 * @param service ローカル日時変換サービス。
 	 */
 	constructor(
-		private service: LocaltimeConverterService) { }
+		private service: LocaltimeConverterService) {
+		// 日時のロケールを設定
+		moment.locale(localeHelper.getLocale());
+	}
 
 	/**
 	 * コンポーネント起動時の処理。
 	 */
 	ngOnInit(): void {
 		// タイムゾーン一覧を設定して画面をリセット
-		//moment.locale(String);
 		this.timezones = moment.tz.names();
 		this.reset();
 	}
@@ -56,7 +60,7 @@ export class LocaltimeConverterComponent implements OnInit {
 
 		// フォームと結果を現在日時と現在のタイムゾーンで初期化
 		this.form = {
-			date: now.format('YYYY-MM-DD HH:mm:ss'),
+			date: now.format('YYYY/MM/DD HH:mm:ss'),
 			timezone: timezone,
 		};
 		this.convert();

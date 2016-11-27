@@ -1,53 +1,53 @@
 <div class="panel panel-default">
-  <div class="panel-heading" i18n>{{ "CONVERT_FORM_TITLE" }}</div>
+  <div class="panel-heading" i18n>{{ "CONVERT_FORM_TITLE" | translate }}</div>
   <div class="panel-body">
-    <div>{{ "CONVERT_FORM_BODY" }}</div>
+    <div>{{ "CONVERT_FORM_BODY" | translate }}</div>
     <form #f="ngForm" novalidate>
       <fieldset class="form-group">
         <input type="text" name="date" [(ngModel)]="form.date" #date="ngModel" (ngModelChange)="convert()" required valid-date />
         <span [ngSwitch]="result.createdBy">
-          <span *ngSwitchCase="dateString">({{ "DATE_STRING" }}, {{ offset }} {{ abbr }})</span>
-          <span *ngSwitchCase="unixtime">({{ "UNIXTIME" }})</span>
-          <span *ngSwitchCase="unixms">({{ "UNIXMS" }})</span>
+          <span *ngSwitchCase="'dateString'">({{ "DATE_STRING" | translate }}, {{ offset }} {{ abbr }})</span>
+          <span *ngSwitchCase="'unixtime'">({{ "UNIXTIME" | translate }})</span>
+          <span *ngSwitchCase="'unixms'">({{ "UNIXMS" | translate }})</span>
         </span>
         <div class="warning" *ngIf="date.errors">
-          <div [hidden]="date.errors.required">{{ "CONVERT_FORM_REQUIRED" }}</div>
-          <div [hidden]="date.errors.validDate">{{ "CONVERT_FORM_INVALID" }}</div>
+          <div [hidden]="date.errors.required">{{ "CONVERT_FORM_REQUIRED" | translate }}</div>
+          <div [hidden]="date.errors.validDate">{{ "CONVERT_FORM_INVALID" | translate }}</div>
         </div>
       </fieldset>
       <fieldset class="form-group">
-        <label for="form.timezone">{{ "TIMEZONE" }}:</label>
+        <label for="form.timezone">{{ "TIMEZONE" | translate }}:</label>
         <select id="form.timezone" name="timezone" [(ngModel)]="form.timezone" #timezone="ngModel" (change)="convert()">
           <option *ngFor="let tz of timezones" [value]="tz">{{ tz }}</option>
         </select>
-        <button type="button" class="btn btn-warning btn-sm" (click)="reset()">{{ "RESET" }}</button>
+        <!--<button type="button" class="btn btn-warning btn-sm" (click)="reset()">{{ "RESET" | translate }}</button>-->
       </fieldset>
-      <small><a href="{{ 'CONVERT_FORM_NOTE_URL' }}">{{ "CONVERT_FORM_NOTE" }}</a></small>
+      <small><a href="{{ 'CONVERT_FORM_NOTE_URL' | translate }}">{{ "CONVERT_FORM_NOTE" | translate }}</a></small>
     </form>
   </div>
 </div>
 <div class="panel panel-default">
-  <div class="panel-heading">{{ "CONVERT_FORM_RESULT" }}</div>
+  <div class="panel-heading">{{ "CONVERT_FORM_RESULT" | translate }}</div>
   <table class="table">
     <tbody>
       <tr>
-        <th>{{ "UNIXTIME" }}</th>
+        <th>{{ "UNIXTIME" | translate }}</th>
         <td>{{ result.unixtime }}</td>
       </tr>
       <tr>
-        <th>{{ "UTCTIME" }}</th>
+        <th>{{ "UTCTIME" | translate }}</th>
         <td>{{ result.utctime }}</td>
       </tr>
       <tr>
-        <th>{{ "LOCALTIME" }}</th>
+        <th>{{ "LOCALTIME" | translate }}</th>
         <td>{{ result.localtime }}</td>
       </tr>
       <tr>
-        <th>{{ "ISO8601" }}</th>
+        <th>{{ "ISO8601" | translate }}</th>
         <td>{{ result.date.toISOString() }}</td>
       </tr>
       <tr>
-        <th>{{ "TIMEZONE" }}</th>
+        <th>{{ "TIMEZONE" | translate }}</th>
         <td>{{ result.offset }} {{ result.abbr }}</td>
       </tr>
     </tbody>
