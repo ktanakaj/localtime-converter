@@ -3,21 +3,25 @@
  * @author Koichi Tanaka
  */
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { LocaltimeConverterService } from './services/localtime-converter';
+import { DateValidatorDirective } from './directives/validate-date';
 import { LocaltimeConverterComponent } from './controllers/localtime-converter';
 
 /**
  * ローカル日時変換ルートモジュールクラス。
  */
 @NgModule({
-	imports: [BrowserModule],
+	imports: [
+		BrowserModule,
+		FormsModule,
+	],
 	declarations: [
 		AppComponent,
+		DateValidatorDirective,
 		LocaltimeConverterComponent,
 	],
-	providers: [LocaltimeConverterService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

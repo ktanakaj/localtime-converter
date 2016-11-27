@@ -37,7 +37,7 @@ export class LocaltimeConverterService {
 
 		// 変換に失敗している場合は例外を投げる
 		if (isNaN(date.getTime())) {
-			throw new Error("Invalid Date");
+			throw new Error("Invalid Date: " + dateOrTimestamp);
 		}
 		return [date, createdBy];
 	}

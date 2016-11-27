@@ -1,19 +1,7 @@
 /**
- * Angularjs全般のユーティリティ。
+ * Angular2全般のユーティリティ。
  * @module ./scripts/libs/angular-utils
  */
-
-/**
- * ブラウザの言語設定を取得する。
- * @returns 2文字の言語コード。取得失敗時は空文字列。
- */
-function getBrowserLanguage(): string {
-	try {
-		return navigator.language.substr(0, 2);
-	} catch (e) {
-		return "";
-	}
-}
 
 /**
  * アプリで使用する言語設定を取得する。
@@ -21,7 +9,7 @@ function getBrowserLanguage(): string {
  */
 function getLanguage(): string {
 	// 日英のみ対応なので、日本語以外は英語で返す
-	let lang = getBrowserLanguage();
+	let lang = getLocale().substr(0, 2);
 	if (lang != "" && lang != "ja") {
 		return "en";
 	} else {
@@ -29,7 +17,20 @@ function getLanguage(): string {
 	}
 }
 
+/**
+ * ブラウザのロケールを取得する。
+ * @returns ロケールコード。
+ */
+function getLocale(): string {
+	// 取得失敗時はデフォルトとしてアメリカを返す
+	try {
+		return navigator.language;
+	} catch (e) {
+		return "en-US";
+	}
+}
+
 export default {
-	getBrowserLanguage: getBrowserLanguage,
 	getLanguage: getLanguage,
+	getLocale: getLocale,
 };

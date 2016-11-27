@@ -11,10 +11,9 @@ import { LocaltimeConverterService } from '../services/localtime-converter';
  * ローカル日時変換コンポーネントクラス。
  */
 @Component({
-	moduleId: module.id,
 	selector: 'localtime-converter',
 	templateUrl: 'views/localtime-converter.html',
-	providers: [LocaltimeConverterService]
+	providers: [LocaltimeConverterService],
 })
 export class LocaltimeConverterComponent implements OnInit {
 	/** タイムゾーン名リスト */
@@ -26,20 +25,21 @@ export class LocaltimeConverterComponent implements OnInit {
 	/** フォーム入力値 */
 	form: { date: string, timezone: string };
 	/** 変換結果 */
-	result: { unixtime: number, date: Date, createdBy: string, abbr: string, offset: string };
+	result: { unixtime: number, date: Date, utctime: string, localtime: string, createdBy: string, abbr: string, offset: string };
 
 	/**
 	 * サービスをDIしてコンポーネントを生成する。
-	 * @param localtimeConverterService ローカル日時変換サービス
+	 * @param service ローカル日時変換サービス。
 	 */
 	constructor(
-		/*private localtimeConverterService: LocaltimeConverterService*/) { }
+		private service: LocaltimeConverterService) { }
 
 	/**
 	 * コンポーネント起動時の処理。
 	 */
 	ngOnInit(): void {
 		// タイムゾーン一覧を設定して画面をリセット
+		//moment.locale(String);
 		this.timezones = moment.tz.names();
 		this.reset();
 	}
@@ -49,14 +49,14 @@ export class LocaltimeConverterComponent implements OnInit {
 	 */
 	reset(): void {
 		// クライアントPCのタイムゾーンを設定
-		const now = Date.now();
+		const now = moment();
 		const timezone = moment.tz.guess();
-		this.abbr = moment(now).tz(timezone).format('z');
-		this.offset = moment(now).tz(timezone).format('Z');
+		this.abbr = now.tz(timezone).format('z');
+		this.offset = now.tz(timezone).format('Z');
 
 		// フォームと結果を現在日時と現在のタイムゾーンで初期化
 		this.form = {
-			date: String(now),//$filter('date')(now, 'medium'),
+			date: now.format('YYYY-MM-DD HH:mm:ss'),
 			timezone: timezone,
 		};
 		this.convert();
@@ -66,15 +66,26 @@ export class LocaltimeConverterComponent implements OnInit {
 	 * 日時変換処理。
 	 */
 	convert(): void {
-		//const result = this.localtimeConverterService.newDate(this.form.date);
-		const date = new Date();//result[0];
-		const abbr = moment(date).tz(this.form.timezone).format('z');
+		// ※バリデーションNGの時も呼ばれてしまうため、
+		//   NGの場合は何もしない
+		let info;
+		try {
+			info = this.service.newDate(this.form.date);
+		} catch (e) {
+			return;
+		}
+		// 取得した日時から各種タイムゾーン情報などを結果に格納
+		const date = info[0];
+		const m = moment(date);
+		const abbr = m.tz(this.form.timezone).format('z');
 		this.result = {
 			unixtime: Math.floor(date.getTime() / 1000),
 			date: date,
-			createdBy: "unixtime",//result[1],
+			utctime: m.tz('UTC').format('lll'),
+			localtime: m.tz(this.form.timezone).format('lll'),
+			createdBy: info[1],
 			abbr: isNaN(Number(abbr)) ? abbr : '',
-			offset: moment(date).tz(this.form.timezone).format('Z'),
+			offset: m.tz(this.form.timezone).format('Z'),
 		};
 	}
 }

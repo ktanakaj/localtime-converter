@@ -2,23 +2,25 @@
   <div class="panel-heading" i18n>{{ "CONVERT_FORM_TITLE" }}</div>
   <div class="panel-body">
     <div>{{ "CONVERT_FORM_BODY" }}</div>
-    <form name="convertForm" novalidate>
+    <form #f="ngForm" novalidate>
       <fieldset class="form-group">
-        <input type="text" name="form.date" ng-model="form.date" ng-change="!convertForm.$invalid && convert()" validate-date required />
-        <span ng-switch="result.createdBy">
-          <span ng-switch-when="dateString">({{ "DATE_STRING" }}, {{ offset }} {{ abbr }})</span>
-          <span ng-switch-when="unixtime">({{ "UNIXTIME" }})</span>
-          <span ng-switch-when="unixms">({{ "UNIXMS" }})</span>
+        <input type="text" name="date" [(ngModel)]="form.date" #date="ngModel" (ngModelChange)="convert()" required valid-date />
+        <span [ngSwitch]="result.createdBy">
+          <span *ngSwitchCase="dateString">({{ "DATE_STRING" }}, {{ offset }} {{ abbr }})</span>
+          <span *ngSwitchCase="unixtime">({{ "UNIXTIME" }})</span>
+          <span *ngSwitchCase="unixms">({{ "UNIXMS" }})</span>
         </span>
-        <div class="warning" ng-show="convertForm['form.date'].$error.required">{{ "CONVERT_FORM_REQUIRED" }}</div>
-        <div class="warning" ng-show="convertForm['form.date'].$error.validateDate">{{ "CONVERT_FORM_INVALID" }}</div>
+        <div class="warning" *ngIf="date.errors">
+          <div [hidden]="date.errors.required">{{ "CONVERT_FORM_REQUIRED" }}</div>
+          <div [hidden]="date.errors.validDate">{{ "CONVERT_FORM_INVALID" }}</div>
+        </div>
       </fieldset>
       <fieldset class="form-group">
         <label for="form.timezone">{{ "TIMEZONE" }}:</label>
-        <select id="form.timezone" ng-model="form.timezone" ng-change="!convertForm.$invalid && convert()">
-          <option ng-repeat="tz in timezones">{{ tz }}</option>
+        <select id="form.timezone" name="timezone" [(ngModel)]="form.timezone" #timezone="ngModel" (change)="convert()">
+          <option *ngFor="let tz of timezones" [value]="tz">{{ tz }}</option>
         </select>
-        <!--<button type="button" class="btn btn-warning btn-sm" ng-click="reset()">{{ "RESET" }}</button>-->
+        <button type="button" class="btn btn-warning btn-sm" (click)="reset()">{{ "RESET" }}</button>
       </fieldset>
       <small><a href="{{ 'CONVERT_FORM_NOTE_URL' }}">{{ "CONVERT_FORM_NOTE" }}</a></small>
     </form>
@@ -34,11 +36,11 @@
       </tr>
       <tr>
         <th>{{ "UTCTIME" }}</th>
-        <td>{{ result.date | date:'medium':'UTC' }}</td>
+        <td>{{ result.utctime }}</td>
       </tr>
       <tr>
         <th>{{ "LOCALTIME" }}</th>
-        <td>{{ result.date | date:'medium':result.offset }}</td>
+        <td>{{ result.localtime }}</td>
       </tr>
       <tr>
         <th>{{ "ISO8601" }}</th>
