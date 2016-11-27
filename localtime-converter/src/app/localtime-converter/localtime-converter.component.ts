@@ -5,8 +5,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import 'moment-timezone';
-import 'moment/locale/ja';
-import localeHelper  from '../shared/locale-helper';
 import { LocaltimeConverterService } from './shared/localtime-converter.service';
 
 /**
@@ -24,20 +22,19 @@ export class LocaltimeConverterComponent implements OnInit {
 	abbr: string;
 	/** ユーザーのタイムゾーンのオフセット（+09:00など） */
 	offset; string;
+	/** ユーザーのタイムゾーンのオフセット（分） */
+	offsetMin; number;
 	/** フォーム入力値 */
 	form: { date: string, timezone: string };
 	/** 変換結果 */
-	result: { unixtime: number, date: Date, utctime: string, localtime: string, createdBy: string, abbr: string, offset: string };
+	result: { unixtime: number, date: Date, utctime: Date, localtime: Date, createdBy: string, abbr: string, offset: string };
 
 	/**
 	 * サービスをDIしてコンポーネントを生成する。
 	 * @param service ローカル日時変換サービス。
 	 */
 	constructor(
-		private service: LocaltimeConverterService) {
-		// 日時のロケールを設定
-		moment.locale(localeHelper.getLocale());
-	}
+		private service: LocaltimeConverterService) { }
 
 	/**
 	 * コンポーネント起動時の処理。
@@ -55,12 +52,14 @@ export class LocaltimeConverterComponent implements OnInit {
 		// クライアントPCのタイムゾーンを設定
 		const now = moment();
 		const timezone = moment.tz.guess();
-		this.abbr = now.tz(timezone).format('z');
-		this.offset = now.tz(timezone).format('Z');
+		const zone = now.tz(timezone);
+		this.abbr = zone.format('z');
+		this.offset = zone.format('Z');
+		this.offsetMin = moment.tz.zone(timezone).offset(Date.now());
 
 		// フォームと結果を現在日時と現在のタイムゾーンで初期化
 		this.form = {
-			date: now.format('YYYY/MM/DD HH:mm:ss'),
+			date: now.format('YYYY-MM-DD HH:mm:ss'),
 			timezone: timezone,
 		};
 		this.convert();
@@ -70,8 +69,7 @@ export class LocaltimeConverterComponent implements OnInit {
 	 * 日時変換処理。
 	 */
 	convert(): void {
-		// ※バリデーションNGの時も呼ばれてしまうため、
-		//   NGの場合は何もしない
+		// ※バリデーションNGの時も呼ばれてしまうため、NGの場合は何もしない
 		let info;
 		try {
 			info = this.service.newDate(this.form.date);
@@ -79,17 +77,21 @@ export class LocaltimeConverterComponent implements OnInit {
 			return;
 		}
 		// 取得した日時から各種タイムゾーン情報などを結果に格納
+		// ※ momentのformatで十分変換できるが、日本語のロケールだと書式が変なので、
+		//    タイムゾーン情報だけとって後は自前で計算する。
 		const date = info[0];
 		const m = moment(date);
-		const abbr = m.tz(this.form.timezone).format('z');
+		const zone = m.tz(this.form.timezone);
+		const abbr = zone.format('z');
+		const offsetMin = moment.tz.zone(this.form.timezone).offset(date.getTime());
 		this.result = {
 			unixtime: Math.floor(date.getTime() / 1000),
 			date: date,
-			utctime: m.tz('UTC').format('lll'),
-			localtime: m.tz(this.form.timezone).format('lll'),
+			utctime: this.service.toUtcDate(date, this.offsetMin),
+			localtime: this.service.toUtcDate(this.service.toLocalDate(date, offsetMin), this.offsetMin),
 			createdBy: info[1],
 			abbr: isNaN(Number(abbr)) ? abbr : '',
-			offset: m.tz(this.form.timezone).format('Z'),
+			offset: zone.format('Z'),
 		};
 	}
 }

@@ -36,11 +36,11 @@
       </tr>
       <tr>
         <th>{{ "UTCTIME" | translate }}</th>
-        <td>{{ result.utctime }}</td>
+        <td>{{ result.utctime | date:'medium' }}</td>
       </tr>
       <tr>
         <th>{{ "LOCALTIME" | translate }}</th>
-        <td>{{ result.localtime }}</td>
+        <td>{{ result.localtime | date:'medium' }}</td>
       </tr>
       <tr>
         <th>{{ "ISO8601" | translate }}</th>

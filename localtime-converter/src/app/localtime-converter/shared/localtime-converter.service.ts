@@ -41,4 +41,29 @@ export class LocaltimeConverterService {
 		}
 		return [date, createdBy];
 	}
+
+	/**
+	 * 時刻を指定されたタイムゾーン分を加味したものに変換する。
+	 * @param date 変換する日時。
+	 * @param offset タイムゾーン差分（分）。
+	 * @returns 変換した日時。
+	 */
+	toLocalDate(date: Date, offset: number): Date {
+		// offset を計算したタイムゾーンを加味した時刻を生成
+		const dt = new Date(date.getTime());
+		dt.setMinutes(dt.getMinutes() - offset);
+		return dt;
+	}
+
+	/**
+	 * 時刻から指定されたタイムゾーン分の差分を取り除く。
+	 * @param date 取り除く日時。
+	 * @param offset タイムゾーン差分（分）。
+	 * @returns 取り除いた日時。
+	 */
+	toUtcDate(date: Date, offset: number): Date {
+		// ローカル時間を出して時差を算出、その分を取り除く
+		var timestamp = date.getTime();
+		return new Date(timestamp - (this.toLocalDate(date, offset).getTime() - timestamp));
+	}
 }
