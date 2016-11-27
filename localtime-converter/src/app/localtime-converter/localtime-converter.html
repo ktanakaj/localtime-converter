@@ -11,8 +11,8 @@
           <span *ngSwitchCase="'unixms'">({{ "UNIXMS" | translate }})</span>
         </span>
         <div class="warning" *ngIf="date.errors">
-          <div [hidden]="date.errors.required">{{ "CONVERT_FORM_REQUIRED" | translate }}</div>
-          <div [hidden]="date.errors.validDate">{{ "CONVERT_FORM_INVALID" | translate }}</div>
+          <div [hidden]="!date.errors.required">{{ "CONVERT_FORM_REQUIRED" | translate }}</div>
+          <div [hidden]="!date.errors.validDate">{{ "CONVERT_FORM_INVALID" | translate }}</div>
         </div>
       </fieldset>
       <fieldset class="form-group">

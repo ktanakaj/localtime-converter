@@ -49,7 +49,7 @@ export function dateValidator(service: LocaltimeConverterService): ValidatorFn {
 		try {
 			service.newDate(date);
 		} catch (e) {
-			return { 'Invalid Date': { date } };
+			return { 'validDate': { date } };
 		}
 		return null;
 	};
