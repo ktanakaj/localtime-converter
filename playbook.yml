@@ -41,12 +41,10 @@
       - block:
         - name: Install "mocha" node.js package globally
           npm: name=mocha global=yes
+        - name: Install "webpack" node.js package globally
+          npm: name=webpack global=yes
         - name: Install "typescript" node.js package globally
           npm: name=typescript global=yes
-        - name: Install "browserify" node.js package globally
-          npm: name=browserify global=yes
-        - name: Install "watchify" node.js package globally
-          npm: name=watchify global=yes
         - name: Install "typedoc" node.js package globally
           npm: name=typedoc global=yes
         - name: Install "tslint" node.js package globally

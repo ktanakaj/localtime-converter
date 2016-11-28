@@ -10,7 +10,7 @@
 playbook.retry
 coverage
 node_modules
-localtime-converter/src/bundle.js
+localtime-converter/src/bundle.*
 localtime-converter/tmp
 localtime-converter/out
 localtime-converter/obj
