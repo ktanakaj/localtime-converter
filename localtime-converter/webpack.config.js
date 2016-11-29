@@ -17,7 +17,6 @@ module.exports = {
 	},
 	externals: {
 		"moment": "moment",
-		"moment-timezone": "moment",
 	},
 	watchOptions: {
 		poll: 1000

@@ -4,9 +4,9 @@
 （日時文字列は、単に `new Date()` するだけなので、JavaScriptが対応していれば何でも変換します。）
 
 ## 環境
-* AngularJS 2.2.3
+* Angular 2.2.3
     * TypeScript 2.0.x
-    * browserify 13.1.x
+    * webpack 1.13.x
     * ng2-translate 4.0.x
     * Moment Timezone 0.5.9
 
@@ -14,7 +14,8 @@
 * &gt;= Google Chrome Ver51.0.2704.106
 * &gt;= Microsoft Edge 38.14393.0.0
 * &gt;= Firefox 48.0
-* &gt;= Safari (iOS 10)
+
+※ 現在 Safari (iOS 10) では動作せず
 
 ### 開発環境
 * Vagrant 1.8.4 - 仮想環境管理

@@ -4,7 +4,6 @@
  */
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import 'moment-timezone';
 import { LocaltimeConverterService } from './shared/localtime-converter.service';
 
 /**
