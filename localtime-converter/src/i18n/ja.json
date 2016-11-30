@@ -1,6 +1,6 @@
 {
 	"APP_NAME": "ローカル日時変換",
-	"VERSION": "0.0.4",
+	"VERSION": "0.0.5",
 	"COPYRIGHT": "Copyright (C) 2016 Koichi Tanaka All Rights Reserved.",
 	"REPOSITORY_URL": "https://github.com/ktanakaj/localtime-converter",
 	"FATAL_ERROR": "エラーが発生しました。ブラウザを再読み込みして再度実行してください。",

@@ -57,8 +57,9 @@ export class LocaltimeConverterComponent implements OnInit {
 		this.offsetMin = moment.tz.zone(timezone).offset(Date.now());
 
 		// フォームと結果を現在日時と現在のタイムゾーンで初期化
+		// ※ ↓の日付書式がブラウザでパース出来ないものだとアプリの初期化に失敗するので注意
 		this.form = {
-			date: now.format('YYYY-MM-DD HH:mm:ss'),
+			date: now.format('YYYY/MM/DD HH:mm:ss'),
 			timezone: timezone,
 		};
 		this.convert();

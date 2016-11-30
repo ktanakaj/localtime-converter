@@ -14,8 +14,7 @@
 * &gt;= Google Chrome Ver51.0.2704.106
 * &gt;= Microsoft Edge 38.14393.0.0
 * &gt;= Firefox 48.0
-
-※ 現在 Safari (iOS 10) では動作せず
+* &gt;= Safari (iOS 10)
 
 ### 開発環境
 * Vagrant 1.8.4 - 仮想環境管理
