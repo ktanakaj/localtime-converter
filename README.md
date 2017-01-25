@@ -17,8 +17,8 @@
 * &gt;= Safari (iOS 10)
 
 ### 開発環境
-* Vagrant 1.8.4 - 仮想環境管理
-    * VirtualBox 5.0.24 - 仮想環境
+* Vagrant 1.8.x - 仮想環境管理
+    * VirtualBox 5.0.x - 仮想環境
     * vagrant-vbguest - Vagrantプラグイン
 * Visual Studio Community 2015 (NTVS) - アプリ開発用IDE
 
@@ -33,7 +33,7 @@ JavaSriptオンリーで動いているので、`src`以下のファイルを適
 
 * `npm run build` - アプリのビルド
 * `npm run watch` - アプリのビルド（デバッグ用）
-* `npm run doc` - アプリのAPIドキュメント生成 ※TS2.0と0.5.1の環境だと動作せず
+* `npm run doc` - アプリのAPIドキュメント生成
 * `npm test` - アプリのユニットテスト実行
 * `npm run tslint` - アプリの静的解析ツール実行
 * `npm run clean` - 全ビルド生成物の削除

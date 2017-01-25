@@ -8,7 +8,7 @@
     "test": "NODE_ENV=test mocha --compilers ts:espower-typescript/guess --recursive ./test",
     "doc": "npm run clean-doc && typedoc ./src/app ./test --out ./out --mode file",
     "clean": "npm run clean-app & npm run clean-doc",
-    "clean-app": "rm -f ./src/bundle.js",
+    "clean-app": "rm -f ./src/bundle.js ./src/bundle.js.map",
     "clean-doc": "rm -rf ./out",
     "tslint": "tslint ./src/app ./test"
   },
