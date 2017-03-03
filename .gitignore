@@ -10,9 +10,9 @@
 playbook.retry
 coverage
 node_modules
-localtime-converter/src/bundle.*
-localtime-converter/tmp
-localtime-converter/out
-localtime-converter/obj
-localtime-converter/bin
+public/bundle.*
+tmp
+out
+obj
+bin
 !.gitkeep

@@ -4,11 +4,11 @@
 （日時文字列は、単に `new Date()` するだけなので、JavaScriptが対応していれば何でも変換します。）
 
 ## 環境
-* Angular 2.2.3
-    * TypeScript 2.0.x
-    * webpack 1.13.x
-    * ng2-translate 4.0.x
-    * Moment Timezone 0.5.9
+* Angular 2.x
+    * TypeScript 2.x
+    * webpack 2.x
+    * ng2-translate 5.x
+    * Moment Timezone 0.5.x
 
 ### 対応ブラウザ
 * &gt;= Google Chrome Ver51.0.2704.106
@@ -17,19 +17,15 @@
 * &gt;= Safari (iOS 10)
 
 ### 開発環境
-* Vagrant 1.8.x - 仮想環境管理
-    * VirtualBox 5.0.x - 仮想環境
-    * vagrant-vbguest - Vagrantプラグイン
+* Node.js 6.x
 * Visual Studio Community 2015 (NTVS) - アプリ開発用IDE
 
 ## 設置方法
-JavaSriptオンリーで動いているので、`src`以下のファイルを適当な場所に設置すれば動作します。  
+JavaSriptオンリーで動いているので、`public` 以下のファイルを適当な場所に設置すれば動作します。  
 ただし、TypeScriptを使用している関係上ビルドが必要です。
 
-動作する仮想環境は、ソース一式の展開後に `vagrant up` で自動的に立ち上がります。
-
 ### ビルド方法
-ビルド等する場合は `localtime-converter` ディレクトリにて以下のコマンドを実行してください。
+ビルド等する場合は、プロジェクトのディレクトリにて `npm install` の上で、以下のコマンドを実行してください。
 
 * `npm run build` - アプリのビルド
 * `npm run watch` - アプリのビルド（デバッグ用）
@@ -39,7 +35,7 @@ JavaSriptオンリーで動いているので、`src`以下のファイルを適
 * `npm run clean` - 全ビルド生成物の削除
 
 ## 実行方法
-`localtime-converter/src/` にWeb上からアクセスしてください。デフォルトのVMでは http://172.16.10.15/ でアクセス可能です。
+`localtime-converter/public/` にWeb上からアクセスしてください。
 
 ### デモ
 http://honeplus.web.fc2.com/localtime-converter/

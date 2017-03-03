@@ -5,7 +5,7 @@ import * as assert from 'power-assert';
 import 'mocha';
 import 'reflect-metadata';
 
-import { LocaltimeConverterService } from '../../../src/app/localtime-converter/shared/localtime-converter.service';
+import { LocaltimeConverterService } from '../../../public/app/localtime-converter/shared/localtime-converter.service';
 const service = new LocaltimeConverterService();
 
 describe('localtimeConverterService', () => {

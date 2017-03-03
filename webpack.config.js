@@ -2,18 +2,21 @@
  * @file webpack設定スクリプト。
  */
 module.exports = {
-    entry: './src/app/main.ts',
+	entry: './public/app/main.ts',
 	output: {
-		path: __dirname + '/src',
+		path: __dirname + '/public',
 		filename: 'bundle.js'
 	},
 	resolve: {
-		extensions: ["", ".ts", ".tsx", ".js"]
+		extensions: [".ts", ".tsx", ".js", ".json"]
 	},
 	module: {
-		loaders: [
-			{ test: /\.tsx?$/, loader: "ts-loader" }
-		]
+		rules: [{
+			test: /\.tsx?$/,
+			use: [
+				{ loader: "ts-loader" },
+			]
+		}]
 	},
 	externals: {
 		"moment": "moment",
