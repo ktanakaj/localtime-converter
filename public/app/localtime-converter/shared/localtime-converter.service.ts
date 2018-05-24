@@ -63,7 +63,7 @@ export class LocaltimeConverterService {
 	 */
 	toUtcDate(date: Date, offset: number): Date {
 		// ローカル時間を出して時差を算出、その分を取り除く
-		var timestamp = date.getTime();
+		const timestamp = date.getTime();
 		return new Date(timestamp - (this.toLocalDate(date, offset).getTime() - timestamp));
 	}
 }

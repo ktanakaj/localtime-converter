@@ -10,7 +10,7 @@
 function getLanguage(): string {
 	// 日英のみ対応なので、日本語以外は英語で返す
 	let lang = getLocale().substr(0, 2);
-	if (lang != "" && lang != "ja") {
+	if (lang !== "" && lang !== "ja") {
 		return "en";
 	} else {
 		return "ja";
