@@ -4,21 +4,21 @@
 （日時文字列は、単に `new Date()` するだけなので、JavaScriptが対応していれば何でも変換します。）
 
 ## 環境
-* Angular 2.x
+* Angular 6.x
     * TypeScript 2.x
-    * webpack 2.x
-    * ng2-translate 5.x
+    * webpack 4.x
+    * ngx-translate 10.x
     * Moment Timezone 0.5.x
 
 ### 対応ブラウザ
-* &gt;= Google Chrome Ver51.0.2704.106
-* &gt;= Microsoft Edge 38.14393.0.0
-* &gt;= Firefox 48.0
-* &gt;= Safari (iOS 10)
+* &gt;= Google Chrome Ver66.0.3359.181
+* &gt;= Microsoft Edge Ver41.16299.402.0
+* &gt;= Firefox Ver60.1
+* &gt;= Safari (iOS 11)
 
 ### 開発環境
-* Node.js 6.x
-* Visual Studio Community 2015 (NTVS) - アプリ開発用IDE
+* Node.js 10.x
+* Visual Studio Code
 
 ## 設置方法
 JavaSriptオンリーで動いているので、`public` 以下のファイルを適当な場所に設置すれば動作します。  
