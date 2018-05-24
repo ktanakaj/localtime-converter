@@ -3,8 +3,8 @@
  * @author Koichi Tanaka
  */
 import { Component } from '@angular/core';
-import { TranslateService } from 'ng2-translate';
-import localeHelper  from './shared/locale-helper';
+import { TranslateService } from '@ngx-translate/core';
+import localeHelper from './shared/locale-helper';
 
 /**
  * ローカル日時変換ルートコンポーネントクラス。
@@ -18,9 +18,15 @@ export class AppComponent {
 	 * サービスをDIしてコンポーネントを生成する。
 	 * @param translate 国際化サービス。
 	 */
-	constructor(translate: TranslateService) {
+	constructor(
+		private translate: TranslateService) { }
+
+	/**
+	 * コンポーネント起動時の処理。
+	 */
+	async ngOnInit(): Promise<void> {
 		// アプリで使用する言語を設定
-		translate.setDefaultLang('en');
-		translate.use(localeHelper.getLanguage());
+		this.translate.setDefaultLang('en');
+		this.translate.use(localeHelper.getLanguage());
 	}
 }

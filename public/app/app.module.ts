@@ -5,10 +5,11 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { TranslateModule } from 'ng2-translate';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
-import localeHelper  from './shared/locale-helper';
+import localeHelper from './shared/locale-helper';
 import { DateValidatorDirective } from './localtime-converter/shared/valid-date.directive';
 import { LocaltimeConverterComponent } from './localtime-converter/localtime-converter.component';
 
@@ -19,8 +20,14 @@ import { LocaltimeConverterComponent } from './localtime-converter/localtime-con
 	imports: [
 		BrowserModule,
 		FormsModule,
-		HttpModule,
-		TranslateModule.forRoot(),
+		HttpClientModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './i18n/'),
+				deps: [HttpClient]
+			}
+		}),
 	],
 	declarations: [
 		AppComponent,
