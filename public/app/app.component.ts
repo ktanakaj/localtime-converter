@@ -11,7 +11,7 @@ import localeHelper from './shared/locale-helper';
  */
 @Component({
 	selector: 'app-root',
-	templateUrl: 'app/app.html',
+	templateUrl: 'app/app.component.html',
 })
 export class AppComponent {
 	/**

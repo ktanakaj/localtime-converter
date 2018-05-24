@@ -11,7 +11,7 @@ import { LocaltimeConverterService } from './shared/localtime-converter.service'
  */
 @Component({
 	selector: 'localtime-converter',
-	templateUrl: 'app/localtime-converter/localtime-converter.html',
+	templateUrl: 'app/localtime-converter/localtime-converter.component.html',
 	providers: [LocaltimeConverterService],
 })
 export class LocaltimeConverterComponent implements OnInit {
