@@ -38,7 +38,7 @@ JavaSriptオンリーで動いているので、`public` 以下のファイル�
 `localtime-converter/public/` にWeb上からアクセスしてください。
 
 ### デモ
-http://honeplus.web.fc2.com/localtime-converter/
+https://ktanakaj.github.io/localtime-converter/
 
 ## 操作方法
 日時文字列またやUnixtimeを入れれば自動的に変換されます。
