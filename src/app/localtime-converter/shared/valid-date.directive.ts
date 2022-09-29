@@ -1,16 +1,17 @@
 /**
  * Date変換可否バリデーションディレクティブ。
+ *
  * @module ./app/localtime-converter/shared/valid-date
  */
 import { Directive } from '@angular/core';
-import { NG_VALIDATORS, AbstractControl, Validator, ValidatorFn, Validators } from '@angular/forms';
+import { NG_VALIDATORS, AbstractControl, Validator, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { LocaltimeConverterService } from './localtime-converter.service';
 
 /**
  * Date変換可否バリデーションディレクティブクラス。
  */
 @Directive({
-	selector: '[valid-date]',
+	selector: '[appValidDate]',
 	providers: [
 		{ provide: NG_VALIDATORS, useExisting: DateValidatorDirective, multi: true },
 		LocaltimeConverterService,
@@ -18,7 +19,8 @@ import { LocaltimeConverterService } from './localtime-converter.service';
 })
 export class DateValidatorDirective implements Validator {
 	/**
-	 * サービスをDIしてコンポーネントを生成する。
+	 * サービスを使用するコンポーネントを生成する。
+	 *
 	 * @param service ローカル日時変換サービス。
 	 */
 	constructor(
@@ -26,21 +28,23 @@ export class DateValidatorDirective implements Validator {
 
 	/**
 	 * バリデーションを実行する。
+	 *
 	 * @param control コントロール。
 	 * @returns バリデーション結果。
 	 */
-	validate(control: AbstractControl): { [key: string]: any } {
+	validate(control: AbstractControl): ValidationErrors | null {
 		return dateValidator(this.service)(control);
 	}
 }
 
 /**
  * Date変換可否バリデーションファクトリー。
+ *
  * @param service ローカル日時変換サービス。
  * @returns バリデーション関数。
  */
 export function dateValidator(service: LocaltimeConverterService): ValidatorFn {
-	return (control: AbstractControl): { [key: string]: any } => {
+	return (control: AbstractControl): ValidationErrors | null => {
 		const date = control.value;
 		if (date === undefined || date === null || date === '') {
 			return null;

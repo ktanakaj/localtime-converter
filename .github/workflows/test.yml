@@ -1,0 +1,24 @@
+# GitHub Actionsによる自動テスト設定。
+# masterブランチがpushまたはプルリク更新されたタイミングで自動テストを流す。
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+      - run: npm install
+      - run: npm test -- --browsers=ChromeHeadless --watch=false
+      - run: npm run lint

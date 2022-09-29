@@ -4,15 +4,16 @@
     <div>{{ "CONVERT_FORM_BODY" | translate }}</div>
     <form #f="ngForm" novalidate>
       <fieldset class="form-group">
-        <input type="text" name="date" [(ngModel)]="form.date" #date="ngModel" (ngModelChange)="convert()" required valid-date />
+        <input type="text" name="date" [(ngModel)]="form.date" #date="ngModel" (ngModelChange)="convert()" required
+          appValidDate>
         <span [ngSwitch]="result.createdBy">
           <span *ngSwitchCase="'dateString'">({{ "DATE_STRING" | translate }}, {{ offset }} {{ abbr }})</span>
           <span *ngSwitchCase="'unixtime'">({{ "UNIXTIME" | translate }})</span>
           <span *ngSwitchCase="'unixms'">({{ "UNIXMS" | translate }})</span>
         </span>
         <div class="warning" *ngIf="date.errors">
-          <div [hidden]="!date.errors.required">{{ "CONVERT_FORM_REQUIRED" | translate }}</div>
-          <div [hidden]="!date.errors.validDate">{{ "CONVERT_FORM_INVALID" | translate }}</div>
+          <div [hidden]="!date.errors['required']">{{ "CONVERT_FORM_REQUIRED" | translate }}</div>
+          <div [hidden]="!date.errors['validDate']">{{ "CONVERT_FORM_INVALID" | translate }}</div>
         </div>
       </fieldset>
       <fieldset class="form-group">
@@ -44,7 +45,7 @@
       </tr>
       <tr>
         <th>{{ "ISO8601" | translate }}</th>
-        <td>{{ result.date.toISOString() }}</td>
+        <td>{{ result.date?.toISOString() }}</td>
       </tr>
       <tr>
         <th>{{ "TIMEZONE" | translate }}</th>

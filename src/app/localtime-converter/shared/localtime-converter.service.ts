@@ -1,5 +1,6 @@
 /**
  * ローカル日時変換サービスモジュール。
+ *
  * @module ./app/localtime-converter/shared/localtime-converter.service
  */
 import { Injectable } from '@angular/core';
@@ -11,6 +12,7 @@ import { Injectable } from '@angular/core';
 export class LocaltimeConverterService {
 	/**
 	 * 曖昧な入力値を許容するnew Date()。
+	 *
 	 * @param dateOrTimestamp 日時文字列またはタイムスタンプ。
 	 * @returns 生成したDateインスタンスと生成元種別の配列。
 	 * @throws インスタンス生成に失敗した場合。
@@ -44,6 +46,7 @@ export class LocaltimeConverterService {
 
 	/**
 	 * 時刻を指定されたタイムゾーン分を加味したものに変換する。
+	 *
 	 * @param date 変換する日時。
 	 * @param offset タイムゾーン差分（分）。
 	 * @returns 変換した日時。
@@ -57,6 +60,7 @@ export class LocaltimeConverterService {
 
 	/**
 	 * 時刻から指定されたタイムゾーン分の差分を取り除く。
+	 *
 	 * @param date 取り除く日時。
 	 * @param offset タイムゾーン差分（分）。
 	 * @returns 取り除いた日時。
